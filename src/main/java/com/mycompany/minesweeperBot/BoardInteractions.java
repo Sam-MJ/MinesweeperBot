@@ -1,11 +1,6 @@
 package com.mycompany.minesweeperBot;
-
-import java.util.List;
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import com.mycompany.minesweeperBot.Sites.BasePage;
 

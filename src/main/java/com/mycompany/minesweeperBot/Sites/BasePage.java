@@ -1,10 +1,12 @@
 package com.mycompany.minesweeperBot.Sites;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.mycompany.minesweeperBot.Models.Difficulty;
 import com.mycompany.minesweeperBot.Models.GameStatus;
@@ -25,6 +27,15 @@ public abstract class BasePage {
     public abstract void clickCell(CellCoordinate coordinate, boolean leftClick);
     public abstract Board readBoard();
     public abstract GameStatus getGameStatus();
+
+    public WebDriver setupDriver() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        driver.get(baseUrl);
+
+        return driver;
+    }
 
     public String getBaseUrl(){
         return baseUrl;

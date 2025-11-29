@@ -15,6 +15,7 @@
 
 
 // Should concrete base page be init at app level or inside boardinteractions?
+// maybe POM should be the only place with a webdriver.
 // don't forget to close driver at the end.
 
 Sites:
