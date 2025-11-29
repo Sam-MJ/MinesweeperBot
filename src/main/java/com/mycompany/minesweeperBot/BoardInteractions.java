@@ -9,36 +9,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.mycompany.minesweeperBot.Sites.BasePage;
 
+/**
+ * Class to interface between the page board and the internal board
+ * Place for board solving etc? maybe rename to board solver
+ */
+
 public class BoardInteractions {
 
-    private BasePage basePage;
+    private BasePage gamePage;
     private Board board;
     private WebDriver driver;
 
-    public BoardInteractions(BasePage page, Board board){
-        this.basePage = page;
+    public BoardInteractions(WebDriver driver, BasePage page, Board board){
+        this.gamePage = page;
         this.board = board;
-        this.driver = setup();
+        this.driver = driver;
     }
 
-    private WebDriver setup(){
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-        driver.get(basePage.getBaseUrl());
-
-        return driver;
-    }
-
+    /**
+     *  Get board from game page and update internal game board.
+     * */
     public Board updateBoard(){
-
-        WebElement boardElement = driver.findElement(basePage.getBoardBy());
-
-        List<WebElement> cellElements = boardElement.findElements(basePage.getBoardBy());
-
-        Board gameStateBoard = basePage.convertBoard(cellElements, board);
-
-        return gameStateBoard;
+       return gamePage.readBoard();
     }
 
     //public static void markMines(List<coordinates)
